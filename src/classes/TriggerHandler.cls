@@ -4,17 +4,6 @@ public virtual class TriggerHandler {
     private static Map<String, LoopCount> loopCountMap;
     private static Set<String> bypassedHandlers;
 
-    private static final Map <String, TriggerContext> CONTEXTBYCONTEXTNAME = new Map<String,TriggerContext>{
-            'before insert'=>TriggerContext.BEFORE_INSERT,
-            'before update'=>TriggerContext.BEFORE_UPDATE,
-            'before delete'=>TriggerContext.BEFORE_DELETE,
-            'after insert'=>TriggerContext.AFTER_INSERT,
-            'after update'=>TriggerContext.AFTER_UPDATE,
-            'after delete'=>TriggerContext.AFTER_DELETE,
-            'after undelete'=>TriggerContext.AFTER_UNDELETE
-    };
-
-
     // the current context of the trigger, overridable in tests
     @TestVisible
     private TriggerContext context;
@@ -119,11 +108,11 @@ public virtual class TriggerHandler {
         }
 
         if (ctx!=null){
-           this.context = CONTEXTBYCONTEXTNAME.get(ctx);
+           this.context = TriggerHandlerHelper.CONTEXTBYCONTEXTNAME.get(ctx);
             return;
         }
 
-        this.context = CONTEXTBYCONTEXTNAME.get(createContextString());
+        this.context = TriggerHandlerHelper.CONTEXTBYCONTEXTNAME.get(TriggerHandlerHelper.createContextString());
         
     }
 
@@ -140,25 +129,7 @@ public virtual class TriggerHandler {
         }
     }
 
-    private String createContextString(){
-        String timming='before';
-        String operation = 'insert';
 
-        if(Trigger.isAfter){
-            timming='after';
-        }
-
-        if(Trigger.isUpdate){
-            timming='update';
-        }
-
-        if(Trigger.isUndelete){
-            timming='undelete';
-        }
-
-        return timming + ' '+operation;
-
-    }
 
     // make sure this trigger should continue to run
     @TestVisible
@@ -261,7 +232,7 @@ public virtual class TriggerHandler {
 
     // possible trigger contexts
     @TestVisible
-    private enum TriggerContext {
+    public enum TriggerContext {
         BEFORE_INSERT, BEFORE_UPDATE, BEFORE_DELETE,
         AFTER_INSERT, AFTER_UPDATE, AFTER_DELETE,
         AFTER_UNDELETE
