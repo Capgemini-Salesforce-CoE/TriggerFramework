@@ -1,13 +1,13 @@
 # SFDC trigger framework
 # Changed version updated to fix the cyclomatic complexity and pass the PMD validations needed bby our projects.
-# By MMarsson
+# By Marsson
 [![npm version](https://badge.fury.io/js/sfdc-trigger-framework.svg)](https://badge.fury.io/js/sfdc-trigger-framework)
 [![Maintainability](https://api.codeclimate.com/v1/badges/eeeae5a492e34feace99/maintainability)](https://codeclimate.com/github/kevinohara80/sfdc-trigger-framework/maintainability)
 
 
 ## Overview
 
-Triggers should (IMO) be logicless. Putting logic into your triggers creates un-testable, difficult-to-maintain code. It's widely accepted that a best-practice is to move trigger logic into a handler class.
+According to Salesforrce est Prctices, Triggers should be logicless. Putting logic into your triggers creates un-testable, difficult-to-maintain code. It's widely accepted that a best-practice is to move trigger logic into a handler class.
 
 This trigger framework bundles a  **TriggerHandler** base class that you can inherit from in all of your trigger handlers. The base class includes context-specific methods that are automatically called when a trigger is executed.
 
@@ -19,7 +19,7 @@ But the most important part of this framework is that it's minimal and simple to
 [![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com)
 
 **Deploy to Salesforce Org:**
-[![Deploy](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png)](https://githubsfdeploy.herokuapp.com/?owner=marsson&repo=sfdc-trigger-framework&ref=master)
+[![Deploy](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png)](https://githubsfdeploy.herokuapp.com/?owner=Capgemini-Salesforce-CoE&repo=TriggerFramework&ref=master)
 
 ## Usage
 
