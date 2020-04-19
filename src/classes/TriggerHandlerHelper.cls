@@ -8,20 +8,22 @@ This method will only be tested if a test actually passes the context.
 No auto covery for this :(
  */
     public static String createContextString(){
+
         String timming='before';
         String operation = 'insert';
 
-        if(Trigger.isAfter){
+        if(!Test.isRunningTest() && Trigger.isAfter){
             timming='after';
         }
 
-        if(Trigger.isUpdate){
+        if(!Test.isRunningTest() && Trigger.isUpdate){
             operation='update';
         }
 
-        if(Trigger.isUndelete){
+        if(!Test.isRunningTest() && Trigger.isUndelete){
             operation='undelete';
         }
+
         return timming + ' '+operation;
 
     }

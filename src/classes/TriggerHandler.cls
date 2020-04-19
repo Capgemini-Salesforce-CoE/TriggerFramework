@@ -231,7 +231,6 @@ public virtual class TriggerHandler {
     }
 
     // possible trigger contexts
-    @TestVisible
     public enum TriggerContext {
         BEFORE_INSERT, BEFORE_UPDATE, BEFORE_DELETE,
         AFTER_INSERT, AFTER_UPDATE, AFTER_DELETE,
